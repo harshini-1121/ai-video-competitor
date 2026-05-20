@@ -12,13 +12,14 @@ import {
 function ReportDashboard({ data }) {
   if (!data) return null;
   const formatNumber = (num) => {
-    new Intl.FormatNumber("en-US").format(num);
+    return new Intl.NumberFormat("en-US").format(num);
+  };
 
   // Download PPT
   const downloadPPT = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/report/download-ppt",
+        "https://ai-video-competitor.onrender.com/api/report/download-ppt",
         data,
         {
           responseType: "blob",
@@ -92,9 +93,7 @@ function ReportDashboard({ data }) {
             </p>
 
             <p className="text-3xl font-bold text-blue-400 mb-4">
-              {new Intl.NumberFormat("en-US").format(
-                company.stats.subscribers
-              )}
+              {formatNumber(company.stats.subscribers)}
             </p>
 
             <p className="text-slate-400">
@@ -102,7 +101,7 @@ function ReportDashboard({ data }) {
             </p>
 
             <p className="text-2xl font-semibold">
-              {new Intl.NumberFormat("en-US").format(company.metrics.avgViews)}
+              {formatNumber(company.metrics.avgViews)}
             </p>
           </div>
         ))}
@@ -128,22 +127,22 @@ function ReportDashboard({ data }) {
 
                   <p className="text-slate-300">
                     Subscribers:{" "}
-                    {new Intl.NumberFormat("en-US").format(company.stats.subscribers)}
+                    {formatNumber(company.stats.subscribers)}
                   </p>
 
                   <p className="text-slate-300">
                     Avg Views:{" "}
-                    {new Intl.NumberFormat("en-US").format(company.metrics.avgViews)}
+                    {formatNumber(company.metrics.avgViews)}
                   </p>
 
                   <p className="text-slate-300">
                     Engagement Rate:{" "}
-                    {new Intl.NumberFormat("en-US").format(company.metrics.engagementRate)}%
+                    {formatNumber(company.metrics.engagementRate)}%
                   </p>
                 </div>
 
                 <div className="text-3xl font-bold text-blue-400">
-                  {new Intl.NumberFormat("en-US").format(company.score)}
+                  {formatNumber(company.score)}
                 </div>
               </div>
 
@@ -213,17 +212,17 @@ function ReportDashboard({ data }) {
                 <div className="flex gap-6 mt-3 text-slate-300">
                   <span>
                     👁{" "}
-                    {new Intl.NumberFormat("en-US").format(topVideo.views)}
+                    {formatNumber(topVideo.views)}
                   </span>
 
                   <span>
                     👍{" "}
-                    {new Intl.NumberFormat("en-US").format(topVideo.likes)}
+                    {formatNumber(topVideo.likes)}
                   </span>
 
                   <span>
                     💬{" "}
-                    {new Intl.NumberFormat("en-US").format(topVideo.comments)}
+                    {formatNumber(topVideo.comments)}
                   </span>
                 </div>
               </div>
