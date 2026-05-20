@@ -34,7 +34,7 @@ function App() {
       );
 
       const response = await axios.post(
-        "http://localhost:5000/api/report/generate-report",
+        "https://ai-video-competitor.onrender.com/api/report/generate-report",
         {
           company,
           competitors: filteredCompetitors,
