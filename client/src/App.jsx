@@ -97,7 +97,7 @@ function App() {
           <button
             onClick={generateReport}
             disabled={loading}
-            className="w-full mt-6 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 transition-all p-4 rounded-xl font-semibold text-lg"
+            className="w-full mt-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:opacity-90 transition-all p-4 rounded-xl font-semibold text-lg shadow-lg"
           >
             {loading
               ? "Analyzing Competitors..."
@@ -106,7 +106,14 @@ function App() {
         </div>
 
         {/* Dashboard */}
-        <ReportDashboard data={reportData} />
+        {reportData ? (
+          <ReportDashboard data={reportData} />
+        ) : (
+          <div className="text-center text-slate-500 mt-16">
+            Generate a competitor intelligence report
+            to view analytics and insights.
+          </div>
+        )}
 
         <div className="text-center text-slate-500 mt-10 pb-10">
            AI-Powered Video Competitor intelligence Platform

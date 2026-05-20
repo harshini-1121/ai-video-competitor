@@ -11,6 +11,8 @@ import {
 
 function ReportDashboard({ data }) {
   if (!data) return null;
+  const formatNumber = (num) => {
+    new Intl.FormatNumber("en-US").format(num);
 
   // Download PPT
   const downloadPPT = async () => {
@@ -90,7 +92,9 @@ function ReportDashboard({ data }) {
             </p>
 
             <p className="text-3xl font-bold text-blue-400 mb-4">
-              {company.stats.subscribers.toLocaleString()}
+              {new Intl.NumberFormat("en-US").format(
+                company.stats.subscribers
+              )}
             </p>
 
             <p className="text-slate-400">
@@ -98,14 +102,14 @@ function ReportDashboard({ data }) {
             </p>
 
             <p className="text-2xl font-semibold">
-              {company.metrics.avgViews.toLocaleString()}
+              {new Intl.NumberFormat("en-US").format(company.metrics.avgViews)}
             </p>
           </div>
         ))}
       </div>
 
       {/* Rankings */}
-      <div className="bg-slate-800 p-6 rounded-2xl">
+      <div className="bg-slate-800 p-6 rounded-2xl hover:scale-[1.01] transition-all duration-300">
         <h2 className="text-2xl font-bold mb-6">
           Company Rankings
         </h2>
@@ -124,22 +128,22 @@ function ReportDashboard({ data }) {
 
                   <p className="text-slate-300">
                     Subscribers:{" "}
-                    {company.stats.subscribers.toLocaleString()}
+                    {new Intl.NumberFormat("en-US").format(company.stats.subscribers)}
                   </p>
 
                   <p className="text-slate-300">
                     Avg Views:{" "}
-                    {company.metrics.avgViews.toLocaleString()}
+                    {new Intl.NumberFormat("en-US").format(company.metrics.avgViews)}
                   </p>
 
                   <p className="text-slate-300">
                     Engagement Rate:{" "}
-                    {company.metrics.engagementRate}%
+                    {new Intl.NumberFormat("en-US").format(company.metrics.engagementRate)}%
                   </p>
                 </div>
 
                 <div className="text-3xl font-bold text-blue-400">
-                  {company.score.toLocaleString()}
+                  {new Intl.NumberFormat("en-US").format(company.score)}
                 </div>
               </div>
 
@@ -209,17 +213,17 @@ function ReportDashboard({ data }) {
                 <div className="flex gap-6 mt-3 text-slate-300">
                   <span>
                     👁{" "}
-                    {topVideo.views.toLocaleString()}
+                    {new Intl.NumberFormat("en-US").format(topVideo.views)}
                   </span>
 
                   <span>
                     👍{" "}
-                    {topVideo.likes.toLocaleString()}
+                    {new Intl.NumberFormat("en-US").format(topVideo.likes)}
                   </span>
 
                   <span>
                     💬{" "}
-                    {topVideo.comments.toLocaleString()}
+                    {new Intl.NumberFormat("en-US").format(topVideo.comments)}
                   </span>
                 </div>
               </div>
